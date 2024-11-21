@@ -1,0 +1,137 @@
+<div class="popup-warranty">
+	<div class="popup__main">
+		<div class="popup__main--right">
+			<div class="popup__content">
+				<div class="popup--top">
+					<p class="popup__title">Yêu cầu bảo hành</p>
+					<div class="close-btn">
+						<span class="material-symbols-outlined">cancel</span>
+					</div>
+				</div>
+				<p class="popup__subtitle"> Quý khách vui lòng điền đầy đủ các thông tin dưới đây để yêu cầu bảo hành sản phẩm.
+				</p>
+				<p class="popup__subtitle"> Chúng tôi sẽ liên hệ với Quý khách để hỗ trợ trong thời gian sớm nhất. </p>
+			</div>
+			<div>
+				<p class="popup__note">Các mục được đánh dấu * là bắt buộc</p>
+			</div>
+			<form autocomplete="off" class="warranty-form" method="post">
+				<div class="warranty__form">
+					<div class="warranty-detail__input--filled">
+						<p class="warranty-detail__input-title">
+							Mã đơn hàng: <span class="required">*</span>
+						</p>
+						<p class="warranty-detail__input-detail--filled">#DH00<%= order.order_id ?? 'null' %></p>
+					</div>
+					<div class="warranty-detail__input--filled">
+						<p class="warranty-detail__input-title">
+							Ngày mua: <span class="required">*</span>
+						</p>
+						<p class="warranty-detail__input-detail--filled"><%= formatFunction.toDDMMYYYY(new Date(order.order_date)) ?? '01/01/01' %></p>
+					</div>
+					<div class="warranty-detail__input--filled">
+						<p class="warranty-detail__input-title">
+							Tên sản phẩm: <span class="required">*</span>
+						</p>
+						<p class="warranty-detail__input-detail--filled"><%= orderDetail.product_name ?? 'null' %></p>
+					</div>
+					<div class="warranty-detail__input">
+						<p class="warranty-detail__input-title">
+							Số sêri: <span class="required">*</span>
+						</p>
+						<input id="serialNumberInput" type="text" name="serial_number" value="" placeholder="Nhập số sêri" required />
+						<div class="reset__error"></div>
+					</div>
+					<div class="warranty-detail__input">
+						<p class="warranty-detail__input-title" id="nameCustomer">
+							Họ và tên khách hàng: <span class="required">*</span>
+						</p>
+						<input id="nameCustomerInput" type="text" name="name" value="" placeholder="Nhập họ và tên" required />
+						<div class="reset__error"></div>
+					</div>
+					<div class="warranty-detail__input">
+						<p class="warranty-detail__input-title">
+							Số điện thoại khách hàng: <span class="required">*</span>
+						</p>
+						<input id="numberCustomerInput" type="text" name="phone_number" value="" placeholder="Nhập số điện thoại" required />
+						<div class="reset__error"></div>
+					</div>
+					<div class="warranty-detail__input">
+						<p class="warranty-detail__input-title">
+							Tỉnh/Thành phố: <span class="required">*</span>
+						</p>
+						<input id="provinceNameInput" class="location__select" type="text" list="province" name="province" value="" placeholder="Chọn Tỉnh/Thành phố" required />
+						<datalist id="province">
+							<option value="Thành phố Hồ Chí Minh"> </option>
+						</datalist>
+
+						<div class="reset__error"></div>
+					</div>
+					<div class="warranty-detail__input">
+						<p class="warranty-detail__input-title">
+							Quận/Huyện: <span class="required">*</span>
+						</p>
+						<input id="nameDistrictInput" class="location__select" type="text" list="district" name="district" value="" placeholder="Chọn Quận/Huyện" required />
+						
+<datalist id="district">
+    <option value="Quận Ba Đình"></option>
+    <option value="Quận Hoàn Kiếm"></option>
+    <option value="Quận Đống Đa"></option>
+    <option value="Quận Hai Bà Trưng"></option>
+    <option value="Quận Thanh Xuân"></option>
+    <option value="Quận Cầu Giấy"></option>
+    <option value="Quận Hoàng Mai"></option>
+    <option value="Quận Long Biên"></option>
+    <option value="Quận Nam Từ Liêm"></option>
+    <option value="Quận Bắc Từ Liêm"></option>
+    <option value="Quận Tây Hồ"></option>
+    <option value="Quận Hà Đông"></option>
+</datalist>
+
+<div class="reset__error"></div>
+
+<!-- Danh sách Phường/Xã ở Hà Nội -->
+<div class="warranty-detail__input">
+    <p class="warranty-detail__input-title">
+        Phường/Xã: <span class="required">*</span>
+    </p>
+    <input id="nameWardInput" class="location__select" type="text" list="commune" name="commune" value="" placeholder="Chọn Phường/Xã" required />
+    <datalist id="commune">
+        <option value="Phường Trúc Bạch"></option>
+        <option value="Phường Quán Thánh"></option>
+        <option value="Phường Thành Công"></option>
+        <option value="Phường Ngọc Hà"></option>
+        <option value="Phường Ngọc Khánh"></option>
+        <option value="Phường Cống Vị"></option>
+        <option value="Phường Vĩnh Phúc"></option>
+        <option value="Phường Bưởi"></option>
+        <option value="Phường Nhật Tân"></option>
+        <option value="Phường Thụy Khuê"></option>
+        <option value="Phường Yên Phụ"></option>
+        <option value="Phường Xuân La"></option>
+        <option value="Phường Nghĩa Đô"></option>
+        <option value="Phường Nghĩa Tân"></option>
+        <option value="Phường Mai Dịch"></option>
+    </datalist>
+
+
+
+						<div class="reset__error"></div>
+					</div>
+					<div class="warranty-detail__input">
+						<p class="warranty-detail__input-title">Địa chỉ:</p>
+						<input id="customerAddressInput" type="text" name="address" placeholder="Nhập địa chỉ" />
+					</div>
+					<div class="warranty-detail__input">
+						<p class="warranty-detail__input-title">Mô tả lỗi:</p>
+						<textarea id="descriptionInput" placeholder="Nhập mô tả lỗi" rows="6"></textarea>
+					</div>
+				</div>
+				<div class="popup__button">
+					<button class="btn btn--outlined pri btn-cancel"> Hủy </button>
+					<button class="btn btn--filled pri btn-warranty" type="submit"> Gửi </button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
