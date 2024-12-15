@@ -5,13 +5,11 @@
 	<meta charset="UTF-8">
 	<meta name="theme-color" content="#2a7ee4">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="author" content="IE104.O12_Nhom2">
-	<meta name="description" content="TECHTWO đã có hỗ trợ thanh toán qua Internet Banking cho các khách hàng nhà Đồ án môn học.">
-
+	
 	<link rel="shortcut icon" type="image/x-icon" href="/imgs/ico-logo-blue.png">
 	<link rel="stylesheet" href="/styles/pages/order/atm.css">
 
-	<title>Đồ án môn học. Thanh toán thẻ ngân hàng</title>
+	<title>Thanh toán thẻ ngân hàng</title>
 </head>
 
 <body>
@@ -30,7 +28,7 @@
 				<div class="thanks">
 					Cảm ơn
 					<strong> <%= user.user.user_sex === 'Nam' ? 'Anh ' + purchase.order_name : 'Chị ' + purchase.order_name %> </strong>
-					đã cho TECHTWO cơ hội được phục vụ.
+					đã cho chúng tôi cơ hội được phục vụ.
 				</div>
 
 				<div class="info-order">
@@ -62,7 +60,7 @@
 				<div class="pay_box">
 					<div class="pay_bank_frame">
 						<div class="pay_bank" id="bank-vietcombank">
-							<img src="/imgs/transaction/logomb.png" alt="MBBank" id="btn-vietcombank">
+							<img src="/imgs/transaction/bidv.png" alt="MBBank" id="btn-vietcombank">
 						</div>
 						
 					</div>
@@ -70,20 +68,20 @@
 						<div class="pay_info_frame">
 							<div class="pay_frame1">Ngân hàng:</div>
 							<div class="pay_frame2">
-								MBBank - Ngân Hàng Quân Đội Việt Nam
+								BIDV - Ngân hàng Thương mại và Đầu tu và Phát triển Việt Nam
 							</div>
 						</div>
 						<div class="pay_info_frame">
 							<div class="pay_frame1">Số tài khoản:</div>
-							<div class="pay_frame2">0343582108</div>
+							<div class="pay_frame2">2153995748</div>
 						</div>
 						<div class="pay_info_frame">
 							<div class="pay_frame1">Thụ hưởng:</div>
-							<div class="pay_frame2">Phạm Thanh Hải</div>
+							<div class="pay_frame2">Phạm Đình Nguyên</div>
 						</div>
 						<div class="pay_info_frame">
 							<div class="pay_frame1">Chi nhánh:</div>
-							<div class="pay_frame2">CN Quận Thanh Xuân</div>
+							<div class="pay_frame2">CN Cầu Giấy PGD Xuân La</div>
 						</div>
 						<div class="pay_info_frame">
 							<div class="pay_frame1">Nội dung chuyển khoản:</div>
@@ -106,7 +104,7 @@
 							</div>
 						</div>
 						<div class="pay_qr">
-							<img src="/imgs/transaction/mb-qr.png" alt="Bank_QR">
+							<img src="/imgs/transaction/bidv.jpg" alt="Bank_QR">
 						</div>
 						<div class="pay_use">
 							Dùng ứng dụng ngân hàng để quét mã QR chuyển khoản
