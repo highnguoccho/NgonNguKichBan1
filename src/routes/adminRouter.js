@@ -20,7 +20,7 @@ router.get('/dashboard/getChart', adminMiddleware.isLoggedIn, dashboardAdminCont
 router.get('/', adminMiddleware.isLoggedIn, dashboardAdminController.getDashboard)
 
 // admin cate management
-router.get('/categories_admin/add', adminMiddleware.isLoggedIn, cateAdminController.addCategories)
+router.post('/categories_admin/add', adminMiddleware.isLoggedIn, cateAdminController.addCategories)
 router.get('/categories_admin', adminMiddleware.isLoggedIn, cateAdminController.getCategories)
 
 // admin product management

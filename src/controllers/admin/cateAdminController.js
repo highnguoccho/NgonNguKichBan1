@@ -1,5 +1,6 @@
 const general = require('../../models/general.model')
 const cate = require('../../models/admin/cateAdmin.model')
+const db = require('../../config/db/connect')
 
 const cateAdminController = () => { }
 
@@ -47,6 +48,15 @@ cateAdminController.addCategories = async (req, res) => {
     const title = 'QUẢN LÝ DANH MỤC SẢN PHẨM'
     // lấy từ khóa searchKey=?
     let admin = req.admin
+    const categoryName = req.body.productName;
+    console.log(categoryName);
+    // db.query('INSERT INTO categories (category_name) VALUES (?)', [categoryName], (err, results)) => {
+    //     if (err) {
+    //         console.log(err);
+    //     } else {
+    //         console.log(results);
+    //     }
+    // }
 
     let formatFunction = await general.formatFunction()
 

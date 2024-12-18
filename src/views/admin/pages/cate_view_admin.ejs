@@ -29,7 +29,7 @@
 					<div class="page-header__title">
 						<h1>Thêm danh mục sản phẩm</h1>
 						<button class="btn-admin btn-primary">
-							<span class="material-symbols-outlined"> save </span> Lưu
+							<span class="material-symbols-outlined"> <a href="/admin/categories_admin/add">save</a> </span> Lưu
 						</button>
 					</div>
 				</div>
@@ -44,8 +44,13 @@
 
 						<div class="card-body">
 							<div>
-								<label for="product-name-label" class="form-label">Tên danh mục sản phẩm</label>
-								<input type="text" class="form-control" name="productName" id="product-name-label" placeholder="Nhập tên danh mục sản phẩm" value="">
+								<form method="post" action="/admin/categories_admin/add">
+									<label for="product-name-label" class="form-label" name="category-name">Tên danh mục sản phẩm</label>
+									<input type="text" class="form-control" name="productName" id="product-name-label" placeholder="Nhập tên danh mục sản phẩm" value="">
+									<button class="btn-admin btn-primary">
+										<span class="material-symbols-outlined">save</span> Lưu
+									</button>
+								</form>
 							</div>
 						</div>
 					</div>
