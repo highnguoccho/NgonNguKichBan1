@@ -79,6 +79,25 @@ cateAdminController.getAddCategories = async (req, res) => {
     })
 }
 
+cateAdminController.getAddProducts = async (req, res) => {
+    const title = 'QUẢN LÝ SẢN PHẨM'
+    // lấy từ khóa searchKey=?
+    let admin = req.admin
+    let formatFunction = await general.formatFunction()
+    let categories = await general.getCates();
+    let searchKey = req.query.searchKey
+    let page = req.query.page ? req.query.page : 1
+    
+   
+
+    res.status(200).render('admin/pages/product_view_admin', {
+        title: title,
+        admin: admin,
+        formatFunction: formatFunction,
+        categories: categories,
+    })
+}
+
 cateAdminController.addProducts = async (req, res) => {
     const title = 'QUẢN LÝ SẢN PHẨM'
     // lấy từ khóa searchKey=?

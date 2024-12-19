@@ -26,7 +26,7 @@ router.get('/categories_admin', adminMiddleware.isLoggedIn, cateAdminController.
 
 // admin product management
 router.post('/products_admin/add', adminMiddleware.isLoggedIn, cateAdminController.addProducts)
-router.get('/products_admin/add', adminMiddleware.isLoggedIn, cateAdminController.getProducts)
+router.get('/products_admin/add', adminMiddleware.isLoggedIn, cateAdminController.getAddProducts)
 router.get('/products_admin', adminMiddleware.isLoggedIn, cateAdminController.getProducts)
 
 module.exports = router
