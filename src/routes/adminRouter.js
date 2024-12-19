@@ -1,5 +1,8 @@
 const express = require('express')
 const router = express.Router();
+const multer = require('multer');
+const fs = require('fs');
+const path = require('path');
 
 // import controller
 const authAdminController = require('../controllers/admin/authAdminController.js')
@@ -28,5 +31,26 @@ router.get('/categories_admin', adminMiddleware.isLoggedIn, cateAdminController.
 router.post('/products_admin/add', adminMiddleware.isLoggedIn, cateAdminController.addProducts)
 router.get('/products_admin/add', adminMiddleware.isLoggedIn, cateAdminController.getAddProducts)
 router.get('/products_admin', adminMiddleware.isLoggedIn, cateAdminController.getProducts)
+
+
+
+
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, 'uploads/');
+    },
+    filename: function(req, file, cb) {
+        cb(null, Date.now() + path.extname(file.originalname));
+    }
+});
+
+//----
+const upload = multer({ storage: storage });
+router.post('/upload-image', upload.single('image'), (req, res) => {
+    if (!req.file) {
+        return res.status(400).json({ success: false, message: 'Không có tệp nào được tải lên.' });
+    }
+    res.status(200).json({ success: true, imageUrl: '/uploads/' + req.file.filename });
+});
 
 module.exports = router

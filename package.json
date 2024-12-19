@@ -12,10 +12,7 @@
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    
-  },
-
+  "bugs": {},
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
@@ -25,8 +22,9 @@
     "express-session": "^1.17.3",
     "installable": "^0.2.8",
     "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
     "mysql": "^2.18.1",
-    "status": "^0.0.13",
+    "status": "^0.0.6",
     "url": "^0.11.3",
     "util": "^0.12.5"
   },
