@@ -20,11 +20,13 @@ router.get('/dashboard/getChart', adminMiddleware.isLoggedIn, dashboardAdminCont
 router.get('/', adminMiddleware.isLoggedIn, dashboardAdminController.getDashboard)
 
 // admin cate management
-router.get('/categories_admin/add', adminMiddleware.isLoggedIn, cateAdminController.addCategories)
+router.post('/categories_admin/add', adminMiddleware.isLoggedIn, cateAdminController.addCategories)
+router.get('/categories_admin/add', adminMiddleware.isLoggedIn, cateAdminController.getAddCategories)
 router.get('/categories_admin', adminMiddleware.isLoggedIn, cateAdminController.getCategories)
 
 // admin product management
-router.get('/products_admin/add', adminMiddleware.isLoggedIn, cateAdminController.addProducts)
+router.post('/products_admin/add', adminMiddleware.isLoggedIn, cateAdminController.addProducts)
+router.get('/products_admin/add', adminMiddleware.isLoggedIn, cateAdminController.getAddProducts)
 router.get('/products_admin', adminMiddleware.isLoggedIn, cateAdminController.getProducts)
 
 module.exports = router
