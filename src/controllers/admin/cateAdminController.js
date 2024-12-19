@@ -88,7 +88,7 @@ cateAdminController.addProducts = async (req, res) => {
     let categories = await general.getCates()
     let formatFunction = await general.formatFunction()
 
-    res.status(200).render('admin/pages/product_view_admin', {
+    res.status(200).render('admin/pages/products_view_admin', {
         title: title,
         admin: admin,
         categories: categories,
