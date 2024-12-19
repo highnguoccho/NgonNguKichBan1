@@ -68,7 +68,7 @@ const validateInput = () => {
     if (adminLoginValue === '') {
         setError(adminLogin, 'Vui lòng nhập tên đăng nhập!');
         isAllValid = false;
-    } else if (adminLoginValue.length <= 8) {
+    } else if (adminLoginValue.length < 8) {
         setError(adminLogin, 'Tên đăng nhập không đúng định dạng!')
         isAllValid = false;
     } else {
