@@ -1,7 +1,6 @@
 const general = require('../../models/general.model')
 const cate = require('../../models/admin/cateAdmin.model')
 const db = require('../../config/db/connect')
-
 const cateAdminController = () => { }
 
 // [GET] /categories_admin/searchkey=?&page=?
@@ -88,7 +87,7 @@ cateAdminController.addProducts = async (req, res) => {
     let categories = await general.getCates()
     let formatFunction = await general.formatFunction()
 
-    res.status(200).render('admin/pages/products_view_admin', {
+    res.status(200).render('admin/pages/product_view_admin', {
         title: title,
         admin: admin,
         categories: categories,
@@ -98,6 +97,7 @@ cateAdminController.addProducts = async (req, res) => {
 
 // [POST] /categories_admin/delete/:id
 cateAdminController.deleteCategory = async (req, res) => {
+   
 }
 
 module.exports = cateAdminController
