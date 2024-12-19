@@ -9,99 +9,75 @@
 @import url("/styles/components/pagination.css");
 
 :root {
-    --white: #ffffff;
-    --red: #ff0000;
-    --black: #000000;
-    --black-o80: rgba(0, 0, 0, 0.8);
-    --green: #119726;
-    --primary-color-1: #2a7ee4;
-    --primary-color-2: #1559ab;
-    --primary-color-3: #02e5f6;
-    --primary-color-4: #092a3b;
-    --primary-color-5: #fbb72c;
-    --primary-color-6: #f09235;
-    --white-gray: #f9f9f9;
-    --bg-white: #f1f1f1;
-    --bg-gray: #f5f6f8;
-    --del-gray: #868181;
-    --bg-white-o30: rgba(241, 241, 241, 0.3);
-    --bg-white-o50: rgba(241, 241, 241, 0.5);
-    --bg-white-o80: rgba(241, 241, 241, 0.8);
-    --bg-blue-o10: rgba(42, 126, 228, 0.1);
-    --bg-blue-o30: rgba(42, 126, 228, 0.3);
-    --outline-gray: #eaeaea;
-    --dark-gray: #2c2c2c;
-    --dark-gray-2: #1e1e1e;
-    --dark-gray-70: #4A4A4A;
-    --dark-gray-o50: rgba(44, 44, 44, 0.5);
-    --luminos-blue: #0235f6;
-    --pink: #FF685F;
-    --bg-pink: #fffbf8;
-    --outline-pink: #f9ede5;
-    --dollar-red: #D0021C;
-    --dollar-red2: #EA4C2D;
-    --fire-orange: #FF9F40;
-    --yellow-light: #ffefdf;
-    --dark-blue: #114A91;
+/* Tông màu chủ đạo: Tím thanh lịch */
+--primary-color-1: #6a0dad; /* Tím đậm */
+--primary-color-2: #7f00ff; /* Tím sáng */
+--primary-color-3: #9d4edd; /* Tím mận */
+--primary-color-4: #c77dff; /* Tím nhạt */
+--primary-color-5: #e0aaff; /* Tím pha trắng */
+--primary-color-6: #d4a5f9; /* Tím hoa cà */
 
-    --scroll-thumb: #bababa;
-    --scroll-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 -1px rgba(0, 0, 0, 0.1) inset;
+/* Màu trung tính */
+--white: #ffffff;
+--black: #000000;
+--black-o80: rgba(0, 0, 0, 0.8);
+--white-gray: #f8f9fa; /* Trắng xám */
+--bg-white: #f5f5f5; /* Trắng nền */
+--bg-gray: #ececec; /* Xám nền */
+--outline-gray: #d6d6d6; /* Xám viền */
+--dark-gray: #4e4e4e; /* Xám đậm */
+--dark-gray-2: #3c3c3c; /* Xám rất đậm */
 
-    --border-color-1: rgba(0, 0, 0, 0.175);
-    --box-shadow-1: 0 8px 60px 0 rgba(103, 151, 255, .11), 0 12px 90px 0 rgba(103, 151, 255, .11);
+/* Màu phụ */
+--pink: #ff69b4; /* Hồng đậm */
+--fire-orange: #ff764a; /* Cam rực lửa */
+--yellow-light: #fff4cc; /* Vàng ánh sáng */
+--luminos-pink: #ff8cc6; /* Hồng ánh sáng */
+--green: #9acd32; /* Xanh lá non */
+--red: #dc143c; /* Đỏ thẫm */
 
-    --dark1: #0000004d;
-    --dark2: #181c20;
-    --dark3: #212529;
-    --dark4: #2d3135;
-    --dark5: #424549;
-    --dark6: #404346;
-    --dark7: #9c9c9c;
-    --dark8: #dae0e7;
-    --dark9: #262a2e;
-    --dark10: #363636;
+/* Tông nền mờ */
+--bg-white-o30: rgba(245, 245, 245, 0.3);
+--bg-white-o50: rgba(245, 245, 245, 0.5);
+--bg-white-o80: rgba(245, 245, 245, 0.8);
+--bg-purple-o10: rgba(106, 13, 173, 0.1);
+--bg-purple-o30: rgba(106, 13, 173, 0.3);
 
-    /* --red1: #ffdab9; */
-    --red1: rgb(255, 8, 0, 0.1);
-    --red2: #fa8072;
-    --red3: #fe2712;
-    --red4: #ff0800;
-    --red5: #dd3545;
-    --red6: #c6303e;
-    --red7: #ae0c00;
-    --red8: #92000a;
-    --red9: #550000;
-    --red10: #440000;
-    --red11: #330000;
+/* Màu Scrollbar */
+--scroll-thumb: #b49ddc; /* Tím nhạt */
+--scroll-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 -1px rgba(0, 0, 0, 0.1) inset;
 
-    --green1: #E6F1D8;
-    --green2: #e5f8ed;
-    --green3: #AFD788;
-    --green4: #00ac47;
-    --green5: #28a745;
-    --green6: #24963e;
-    --green7: #006600;
-    --green8: #005500;
-    --green9: #004400;
-    --green10: #003300;
-    --green11: #002200;
-    --green12: #001100;
+/* Tông màu đậm */
+--dark1: rgba(0, 0, 0, 0.3);
+--dark2: #282828;
+--dark3: #3c3c3c;
+--dark4: #4e4e4e;
+--dark5: #6a6a6a;
+--dark6: #9e9e9e;
+--dark7: #dcdcdc;
+--dark8: #e8e8e8;
+--dark9: #f5f5f5;
+--dark10: #ffffff;
 
-    --blue1: #e9edf2;
-    --blue2: #add8e6;
-    --blue3: #00aae4;
-    --blue4: #0892d0;
-    --blue5: #007aff;
-    --blue6: #377dff;
-    --blue7: #004f98;
-    --blue8: #0033aa;
-    --blue9: #1034a6;
-    --blue10: #191970;
-    --blue11: #000036;
+/* Màu gradient phong phú hơn */
+--red1: #ff6f61; /* Đỏ cam */
+--red2: #ff4d4d;
+--red3: #e63946;
+--red4: #d62828;
 
-    --yellow1: rgb(255, 193, 7, 0.1);
-    --yellow5: #ffc107;
-    --yellow6: #e5ad06;
+/* Bảng màu tím */
+--purple1: #d8b4f8; /* Tím nhạt */
+--purple2: #c084fc; /* Tím sáng */
+--purple3: #a855f7; /* Tím mộng mơ */
+--purple4: #7e22ce; /* Tím thạch anh */
+--purple5: #581c87; /* Tím hoàng gia */
+
+/* Vàng ánh sáng */
+--yellow1: rgba(255, 223, 0, 0.2);
+--yellow5: #ffd700; /* Vàng tươi */
+--yellow6: #ffcc00;
+
+
 }
 
 * {
