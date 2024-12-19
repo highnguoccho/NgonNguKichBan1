@@ -61,7 +61,7 @@
 						</div>
 
 						<div class="card-body">
-							<div class="dz-dropzone dz-dropzone-card">
+							<div class="dz-dropzone dz-dropzone-card" id = "drop_anh">
 								<div class="dz-message">
 									<img class="img-upload" src="/imgs/admin/img-upload.svg" alt="Image Description" data-hs-theme-appearance="default">
 									<h5>Kéo và thả hình ảnh tại đây</h5>
@@ -86,6 +86,71 @@
 	<script src="/scripts/admin/cate_view_admin.js"></script>
 	<script src="/scripts/admin/index_admin.js"></script>
 
-</body>
+</body><script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const dropzone = document.getElementById('drop_anh');
+        const imageUpload = document.getElementById('imageUpload');
+
+        // Xử lý sự kiện kéo thả
+        dropzone.addEventListener('dragover', function(event) {
+            event.preventDefault();
+            dropzone.classList.add('dz-drag-hover');
+        });
+
+        dropzone.addEventListener('dragleave', function(event) {
+            event.preventDefault();
+            dropzone.classList.remove('dz-drag-hover');
+        });
+
+        dropzone.addEventListener('drop', function(event) {
+            event.preventDefault();
+            dropzone.classList.remove('dz-drag-hover');
+            const files = event.dataTransfer.files;
+            handleFiles(files);
+        });
+
+        // Xử lý sự kiện chọn tệp
+        imageUpload.addEventListener('change', function(event) {
+            const files = event.target.files;
+            handleFiles(files);
+        });
+
+        // Hàm xử lý tệp
+        function handleFiles(files) {
+            if (files.length > 0) {
+                const formData = new FormData();
+                formData.append('image', files[0]);
+
+                // Gửi yêu cầu AJAX để tải lên hình ảnh
+                fetch('/upload-image', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.success) {
+                        alert('Tải lên hình ảnh thành công!');
+                        // Hiển thị hình ảnh đã tải lên
+                        const img = document.createElement('img');
+                        img.src = data.imageUrl;
+                        img.alt = 'Uploaded Image';
+                        dropzone.appendChild(img);
+                    } else {
+                        alert('Có lỗi xảy ra khi tải lên hình ảnh.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Có lỗi xảy ra khi tải lên hình ảnh.');
+                });
+            }
+        }
+    });
+</script>
 
 </html>
