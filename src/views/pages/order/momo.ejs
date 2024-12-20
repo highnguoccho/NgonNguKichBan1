@@ -16,7 +16,7 @@
 
 <body>
 
-	<%- include('../../partials/header', ư{ header: header, user: user }) %>
+	<%- include('../../partials/header', { header: header, user: user }) %>
 	<%- include('../../partials/breadcrumb', { breadcrumbs : [{ text : 'Đặt hàng', link : '' }, { text : 'Thanh toán', link : '' }] }) %>
 
 	<main class="momo-container">
@@ -24,8 +24,8 @@
 			<div class="momo_left-box">
 				<div class="momo-box">
 					<div class="momo-header">
-						<img src="/imgs/transaction/momo.png" alt="momo">
-						<h3 class="header-text"><strong>THANH TOÁN BẰNG MOMO</strong></h3>
+						<img src="/imgs/transaction/vnpay1.png" alt="momo">
+						<h3 class="header-text"><strong>THANH TOÁN BẰNG VNPay</strong></h3>
 					</div>
 					<div class="inner-box">
 						<div class="info-order">
@@ -67,7 +67,7 @@
 			<div class="qr-instruct">
 				<div class="qr-instruct-1">
 					<span class="material-symbols-outlined">qr_code_2</span>
-					<div>Sử dụng App MoMo hoặc ứng dụng</div>
+					<div>Sử dụng App VNPay hoặc app ngân Hàng để quét</div>
 				</div>
 				<div class="qr-instruct-1">
 					<div>camera hỗ trợ QR code để quét mã</div>
