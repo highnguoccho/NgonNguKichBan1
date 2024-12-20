@@ -47,9 +47,10 @@
 
 						<div class="card-body">
 							<div>
-								<form method="post" action="/admin/categories_admin/add">
+								<form method="post" action="/admin/categories_admin/add" enctype="multipart/form-data">
 									<label for="product-name-label" class="form-label" name="category-name">Tên danh mục sản phẩm</label>
 									<input type="text" class="form-control" name="productName" id="product-name-label" placeholder="Nhập tên danh mục sản phẩm" value="">
+									<input type="file" id="file" name="file" required>
 									<button class="btn-admin btn-primary">
 										<span class="material-symbols-outlined">save</span> Lưu
 									</button>
@@ -63,7 +64,7 @@
 							<h4>Ảnh</h4>
 						</div>
 
-						<div class="card-body">
+						<!-- <div class="card-body">
 							<div class="dz-dropzone dz-dropzone-card" id = "drop_anh">
 								<div class="dz-message">
 									<img class="img-upload" src="/imgs/admin/img-upload.svg" alt="Image Description" data-hs-theme-appearance="default">
@@ -78,7 +79,7 @@
 									</div>
 								</div>
 							</div>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>
@@ -113,13 +114,14 @@
         });
 
         // Xử lý sự kiện chọn tệp
-        imageUpload.addEventListener('change', function(event) {
+        imageUpload.addEventListener('change', function(event) {						
             const files = event.target.files;
             handleFiles(files);
         });
 
         // Hàm xử lý tệp
         function handleFiles(files) {
+			debugger;
             if (files.length > 0) {
                 const formData = new FormData();
                 formData.append('image', files[0]);

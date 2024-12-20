@@ -53,7 +53,7 @@
 			<div class="main__filter">
 				<div>
 					<div class="filter__btn-group">
-						<a class="admin-a btn-admin btn-outline-danger" href="#">
+						<a class="admin-a btn-admin btn-outline-danger" href="#" id="deleteSelectedProducts">
 							<span class="material-symbols-rounded"> delete_forever </span>
 							<p>Xóa</p>
 						</a>
@@ -105,7 +105,7 @@
 						<% } else { %>
 						<% data.products.forEach(function(product) { %>
 						<tr class="employeeDetails">
-							<td><input type="checkbox" class="checkbox"></td>
+							<td><input type="checkbox" class="checkbox" id = "checkbox" value="<%= product.product_id %>"></td>
 							<td> <%= product.product_id ?? 'Null' %> </td>
 							<td>
 								<img src="/imgs/product_image/P<%= product.product_id %>/<%= product.product_avt_img ?? 'default.png' %>" alt="<%= product.product_name ?? 'Null' %>">
@@ -127,10 +127,7 @@
 												<a class="admin-a" href="#">Sửa</a>
 											</li>
 											<li>
-												<a class="admin-a" href="#">Ẩn</a>
-											</li>
-											<li>
-												<a class="admin-a" href="#">Xóa</a>
+												<button class="admin-a delete-product" data-id="<%= product.product_id %>">Xóa</button>
 											</li>
 										</ul>
 									</li>
@@ -151,7 +148,47 @@
 	<!-- Scripts -->
 	<script src="/scripts/admin/cate_admin.js"></script>
 	<script src="/scripts/admin/index_admin.js"></script>
+	<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const deleteButtons = document.querySelectorAll('.delete-product');
 
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                const productId = this.getAttribute('data-id');
+
+                if (confirm('Bạn có chắc chắn muốn xóa sản phẩm này?')) {
+                    fetch(`/admin/products_admin/delete/${productId}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.message) {
+                            alert(data.message);
+                            // Tải lại trang để cập nhật danh sách sản phẩm
+                            location.reload();
+                        } else {
+                            alert('Có lỗi xảy ra khi xóa sản phẩm.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('Có lỗi xảy ra khi xóa sản phẩm.');
+                    });
+                }
+            });
+        });
+    });
+</script>
+	
 </body>
 
 </html>

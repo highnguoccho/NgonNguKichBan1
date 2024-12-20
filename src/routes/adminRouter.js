@@ -26,12 +26,13 @@ router.get('/', adminMiddleware.isLoggedIn, dashboardAdminController.getDashboar
 router.post('/categories_admin/add', adminMiddleware.isLoggedIn, cateAdminController.addCategories)
 router.get('/categories_admin/add', adminMiddleware.isLoggedIn, cateAdminController.getAddCategories)
 router.get('/categories_admin', adminMiddleware.isLoggedIn, cateAdminController.getCategories)
+router.delete('/categories_admin/delete/:id', adminMiddleware.isLoggedIn, cateAdminController.deleteCategory);
 
 // admin product management
 router.post('/products_admin/add', adminMiddleware.isLoggedIn, cateAdminController.addProducts)
 router.get('/products_admin/add', adminMiddleware.isLoggedIn, cateAdminController.getAddProducts)
 router.get('/products_admin', adminMiddleware.isLoggedIn, cateAdminController.getProducts)
-
+router.delete('/products_admin/delete/:id', adminMiddleware.isLoggedIn, cateAdminController.deleteProducts)
 
 
 
@@ -45,12 +46,25 @@ const storage = multer.diskStorage({
 });
 
 //----
-const upload = multer({ storage: storage });
+const upload = multer({ dest: 'uploads/' });
+
 router.post('/upload-image', upload.single('image'), (req, res) => {
+    console.log('upload image');
+
+    // Kiểm tra nếu không có file
     if (!req.file) {
-        return res.status(400).json({ success: false, message: 'Không có tệp nào được tải lên.' });
+        return res.status(400).json({
+            success: false,
+            message: 'Không có tệp nào được tải lên.',
+        });
     }
-    res.status(200).json({ success: true, imageUrl: '/uploads/' + req.file.filename });
+
+    // Trả về đường dẫn file đã tải lên
+    res.status(200).json({
+        success: true,
+        imageUrl: '/uploads/' + req.file.filename,
+    });
 });
+
 
 module.exports = router
