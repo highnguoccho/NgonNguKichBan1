@@ -100,13 +100,15 @@ form .login__sign-in-form {
 }
 
 .login__logo img {
-    width: 10rem;
+ 
     margin-right: 0.3rem;
 }
 
 
 .login__heading h1 {
     color: var(--black);
+    text-align: center;
+    padding: 5px;
 }
 
 .login__heading h4 {

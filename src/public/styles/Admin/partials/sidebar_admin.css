@@ -10,7 +10,7 @@
 	grid-area: sidebar;
 	height: 100%;
 	background: var(--dark-gray);
-	background-image: url('/imgs/admin/background6.jpg');
+	background-image: url('/imgs/admin/sidebar.png');
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;

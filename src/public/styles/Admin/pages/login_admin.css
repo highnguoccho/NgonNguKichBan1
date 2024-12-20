@@ -37,7 +37,7 @@ main {
     min-height: 100vh;
     overflow: hidden;
     background-color: var(--bg-white);
-    background-image: url(../../../imgs/admin/background-landscape.jpg);
+    background-image: url(../../../imgs/admin/backgroundlogin.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
