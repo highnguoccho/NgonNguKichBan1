@@ -3,6 +3,7 @@ const cate = require('../../models/admin/cateAdmin.model')
 const db = require('../../config/db/connect')
 const cateAdminController = () => { }
 
+
 // [GET] /categories_admin/searchkey=?&page=?
 cateAdminController.getCategories = async (req, res) => {
     const title = 'QUẢN LÝ DANH MỤC SẢN PHẨM'
@@ -114,9 +115,22 @@ cateAdminController.addProducts = async (req, res) => {
     })
 }
 
+cateAdminController.deleteProducts  = async (req,res) =>{
+    return new Promise((resolve, reject) => {
+        db.query('DELETE FROM products WHERE product_id = ?', [req.body.product_id], (err, results) => {
+            if (err) {
+                console.log(err);
+                resolve(resut);
+            }
+            resolve(1)
+        })
+    })
+}
+
 // [POST] /categories_admin/delete/:id
 cateAdminController.deleteCategory = async (req, res) => {
    
 }
+
 
 module.exports = cateAdminController
