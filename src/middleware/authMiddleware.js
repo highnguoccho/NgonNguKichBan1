@@ -65,7 +65,7 @@ exports.getLoggedIn = async (req, res, next) => {
     if (req.cookies.userSave) {
         try {
             // 1. Verify the token
-            console.log('Đăng nhập thành công');    
+            console.log('Trạng thái đăng nhập: Đã đăng nhập');    
             const decoded = await promisify(jwt.verify)(req.cookies.userSave,
                 process.env.JWT_SECRET
             );
