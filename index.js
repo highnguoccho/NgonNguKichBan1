@@ -34,5 +34,5 @@ app.use(cookieParser('secret'))
 route(app)
 
 app.listen(cfg.port,'0.0.0.0', () => {
-    console.log(`Website is running at http://${cfg.host}:${cfg.port}`)
+    console.log(`Server chạy trên cổng http://${cfg.host}:${cfg.port}`)
 })
