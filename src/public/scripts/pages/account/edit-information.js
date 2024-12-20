@@ -1,6 +1,5 @@
-
 function cleanDateFormatInput(inputDate) {
-    // Sử dụng regular expression để loại bỏ các ký tự không mong muốn
+    
     return inputDate.replace(/[^\d/]/g, '');
 }
 
@@ -108,7 +107,7 @@ const setSuccess = element => {
 }
 
 const isValidUserName = userName => {
-    const re = /^[a-zA-Z\sàáạảãăắằẵặẳâầấậẩẫđèéẹẻẽêềếệểễòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữìíịỉĩỳýỵỷỹ]+$/
+    const re = /^[a-zA-Z\sàáạảãăắằẵặẳâầấậẩẫđèéẹẻẽêềếệểễòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữìíịỉĩỳýỵỷỹĂÂĐÊOÔƠƯ]+$/
     return re.test(String(userName).trim())
 }
 
@@ -121,8 +120,8 @@ const isValidEmail = email => {
     if (!email) {
         return true;
     }
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+${.com}/
-    return re.test(String(email).toLowerCase())
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    return re.test(String(email).toLowerCase());
 }
 
 const validateInput = () => {
