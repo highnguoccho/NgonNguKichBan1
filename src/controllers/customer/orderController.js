@@ -149,7 +149,7 @@ orderController.payment = async (req, res) => {
 	let purchase = await account.getPurchaseHistory(customer_id, 0, order_id)
 
 	if (paying_method_id == 1) {
-		res.render("./pages/order/momo", {
+		res.render("./pages/order/vnpay", {
 			header: header,
 			user: header_user,
 			formatFunction: formatFunction,
