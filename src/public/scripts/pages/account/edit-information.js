@@ -107,7 +107,7 @@ const setSuccess = element => {
 }
 
 const isValidUserName = userName => {
-    const re = /^[a-zA-Z\sàáạảãăắằẵặẳâầấậẩẫđèéẹẻẽêềếệểễòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữìíÌịỉĩỳýỵỷỹĂÂĐÊOÔƠƯ]+$/
+    const re = /^[a-zA-Z\sàáạảãăắằẵặẳâầấậẩẫđèéẹẻẽêềếệểễòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữìíịỉĩỳýỵỷỹĂÂĐÊOÔƠƯ]+$/
     return re.test(String(userName).trim())
 }
 
@@ -122,6 +122,7 @@ const isValidEmail = email => {
     }
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     return re.test(String(email).toLowerCase());
+    
 }
 
 const validateInput = () => {

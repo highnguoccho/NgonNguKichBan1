@@ -820,7 +820,7 @@ CREATE TABLE `paying_methods` (
 --
 
 INSERT INTO `paying_methods` (`paying_method_id`, `paying_method_name`, `paying_method_is_display`) VALUES
-(1, 'Ví điện tử MoMo', 1),
+(1, 'Ví điện tử vnpay', 1),
 (2, 'Thẻ ngân hàng', 1),
 (3, 'Thẻ tín dụng', 1);
 

@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-	const cancelButtons = document.querySelectorAll('.momo_left-cancel')
+	const cancelButtons = document.querySelectorAll('.vnpay_left-cancel')
 
 	cancelButtons.forEach(function (cancelButton) {
 		cancelButton.addEventListener('click', function () {
