@@ -3,6 +3,8 @@ const index = require("../../models/customer/index.model")
 const order = require("../../models/customer/order.model")
 const general = require("../../models/general.model")
 const account = require("../../models/customer/account.model")
+const nodeMailer = require("nodemailer")
+const { log } = require("console")
 
 const orderController = () => { }
 
@@ -126,6 +128,31 @@ orderController.informationPost = async (req, res) => {
 				})
 			} else if (success) {
 				order.deleteCart(customer_id, orderDetails, function (err, success) { })
+				var transporter = nodeMailer.createTransport({
+					host: "smtp.gmail.com",
+					port: 465,
+					secure: true,
+					auth: {
+					  user: "dvtrieu03@gmail.com",
+					  pass: "ilumvqutexayuoah",
+					},
+				  });
+			  
+				  const html = `<h2>Xin chào, Chu Tuan Manh</h2><br/> +
+								<p>Đơn hàng của bạn đã được thanh toán thành công.</p><br/> +
+								<p>Cảm ơn bạn đã mua hàng tại cửa hàng chúng tôi.</p><br/> +
+								<p>Hãy kiểm tra email thường xuyên để nhận thông tin đơn hàng và thông tin khuyến mãi nhé!</p>`;
+			  
+				  var mailOptions = {
+					from: "Model Shop <dvtrieu03@gmail.com>",
+					to: "chutuanmanh2003@gmail.com",
+					subject: "XÁC NHẬN ĐẶT HÀNG THÀNH CÔNG",
+					html: html,
+				  };
+			  
+				  const info = transporter.sendMail(mailOptions);
+				  console.log(info);
+				  
 				res.status(200).json({
 					status: "success",
 					order_id: order_id,
