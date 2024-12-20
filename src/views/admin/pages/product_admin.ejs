@@ -129,10 +129,7 @@
 												<a class="admin-a" href="#">Sửa</a>
 											</li>
 											<li>
-												<a class="admin-a" href="#">Ẩn</a>
-											</li>
-											<li>
-												<a class="admin-a" href="#">Xóa</a>
+												<button class="admin-a delete-product" data-id="<%= product.product_id %>">Xóa</button>
 											</li>
 										</ul>
 									</li>
@@ -154,57 +151,45 @@
 	<script src="/scripts/admin/cate_admin.js"></script>
 	<script src="/scripts/admin/index_admin.js"></script>
 	<script>
-		document.addEventListener('DOMContentLoaded', function () {
-			document.getElementById('deleteSelectedProducts').addEventListener('click', function (event) {
-				event.preventDefault();
-	
-				// Lấy danh sách các checkbox đã được chọn
-				const checkboxes = document.querySelectorAll('.checkbox:checked');
-				const productIds = Array.from(checkboxes).map(checkbox => checkbox.value);
-	
-				// Kiểm tra nếu không có sản phẩm nào được chọn
-				if (productIds.length === 0) {
-					alert('Vui lòng chọn ít nhất một sản phẩm để xóa.');
-					return;
-				}
-	
-				// Gửi yêu cầu AJAX để xóa các sản phẩm đã chọn
-				fetch('/products_admin/delete', {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json'
-					},
-					body: JSON.stringify({ productIds: productIds })
-				})
-					.then(response => {
-						// Kiểm tra nếu phản hồi không phải JSON
-						const contentType = response.headers.get('content-type');
-						if (!response.ok) {
-							throw new Error(`HTTP error! Status: ${response.status}`);
-						}
-						if (!contentType || !contentType.includes('application/json')) {
-							throw new Error('Phản hồi không phải JSON');
-						}
-						return response.json();
-					})
-					.then(data => {
-						// Kiểm tra phản hồi từ server
-						if (data && data.success) {
-							alert(data.message || 'Xóa sản phẩm thành công.');
-							// Tải lại trang để cập nhật danh sách sản phẩm
-							location.reload();
-						} else {
-							alert(data.message || 'Có lỗi xảy ra khi xóa sản phẩm.');
-						}
-					})
-					.catch(error => {
-						// Hiển thị lỗi chi tiết để dễ debug
-						console.error('Lỗi:', error);
-						alert('Có lỗi xảy ra. Vui lòng thử lại.');
-					});
-			});
-		});
-	</script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const deleteButtons = document.querySelectorAll('.delete-product');
+
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                const productId = this.getAttribute('data-id');
+
+                if (confirm('Bạn có chắc chắn muốn xóa sản phẩm này?')) {
+                    fetch(`/admin/products_admin/delete/${productId}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.message) {
+                            alert(data.message);
+                            // Tải lại trang để cập nhật danh sách sản phẩm
+                            location.reload();
+                        } else {
+                            alert('Có lỗi xảy ra khi xóa sản phẩm.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('Có lỗi xảy ra khi xóa sản phẩm.');
+                    });
+                }
+            });
+        });
+    });
+</script>
 	
 </body>
 

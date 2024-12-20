@@ -158,20 +158,38 @@ cateAdminController.addProducts = async (req, res) => {
 
 cateAdminController.deleteProducts  = async (req,res) =>{
     return new Promise((resolve, reject) => {
-        db.query('DELETE FROM products WHERE product_id = ?', [req.body.product_id], (err, results) => {
+        db.query('DELETE FROM products WHERE product_id = ?', [req.params.id], (err, results) => {
             if (err) {
                 console.log(err);
-                resolve(resut);
+                reject(err);
+                return res.status(500).json({ message: 'Lỗi khi xóa danh mục', error: err });
             }
-            resolve(1)
-        })
-    })
+            if (results.affectedRows === 0) {
+                return res.status(404).json({ message: 'Danh mục không tồn tại' });
+            }
+            resolve(results);
+            return res.status(200).json({ message: 'Xóa danh mục thành công' });
+        });
+    });
 }
 
 // [POST] /categories_admin/delete/:id
 cateAdminController.deleteCategory = async (req, res) => {
-   
-}
+    return new Promise((resolve, reject) => {
+        db.query('DELETE FROM categories WHERE category_id = ?', [req.params.id], (err, results) => {
+            if (err) {
+                console.log(err);
+                reject(err);
+                return res.status(500).json({ message: 'Lỗi khi xóa danh mục', error: err });
+            }
+            if (results.affectedRows === 0) {
+                return res.status(404).json({ message: 'Danh mục không tồn tại' });
+            }
+            resolve(results);
+            return res.status(200).json({ message: 'Xóa danh mục thành công' });
+        });
+    });
+};
 
 
 module.exports = cateAdminController

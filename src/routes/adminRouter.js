@@ -26,12 +26,13 @@ router.get('/', adminMiddleware.isLoggedIn, dashboardAdminController.getDashboar
 router.post('/categories_admin/add', adminMiddleware.isLoggedIn, cateAdminController.addCategories)
 router.get('/categories_admin/add', adminMiddleware.isLoggedIn, cateAdminController.getAddCategories)
 router.get('/categories_admin', adminMiddleware.isLoggedIn, cateAdminController.getCategories)
+router.delete('/categories_admin/delete/:id', adminMiddleware.isLoggedIn, cateAdminController.deleteCategory);
 
 // admin product management
 router.post('/products_admin/add', adminMiddleware.isLoggedIn, cateAdminController.addProducts)
 router.get('/products_admin/add', adminMiddleware.isLoggedIn, cateAdminController.getAddProducts)
 router.get('/products_admin', adminMiddleware.isLoggedIn, cateAdminController.getProducts)
-router.post('/products_admin/delete', adminMiddleware.isLoggedIn, cateAdminController.deleteProducts)
+router.delete('/products_admin/delete/:id', adminMiddleware.isLoggedIn, cateAdminController.deleteProducts)
 
 
 
@@ -64,5 +65,6 @@ router.post('/upload-image', upload.single('image'), (req, res) => {
         imageUrl: '/uploads/' + req.file.filename,
     });
 });
+
 
 module.exports = router
