@@ -5,15 +5,12 @@
 	<meta charset="UTF-8">
 	<meta name="theme-color" content="#2a7ee4">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-=======
 	<meta name="author" content="IE104.O12_Nhom2">
 	<meta name="description" content=".">
->>>>>>> 0124a72ad0f6fd8eda195e53e343fb72895aa774
 	<link rel="shortcut icon" type="image/x-icon" href="/imgs/ico-logo-blue.png">
 	<link rel="stylesheet" href="/styles/admin/pages/cate_view_admin.css">
 
-	<title>Admin - Thêm danh mục</title>
+	<title>Đồ án môn học.Admin - Thêm danh mục</title>
 </head>
 
 <body>
@@ -47,9 +44,10 @@
 
 						<div class="card-body">
 							<div>
-								<form method="post" action="/admin/categories_admin/add">
+								<form method="post" action="/admin/categories_admin/add" enctype="multipart/form-data">
 									<label for="product-name-label" class="form-label" name="category-name">Tên danh mục sản phẩm</label>
 									<input type="text" class="form-control" name="productName" id="product-name-label" placeholder="Nhập tên danh mục sản phẩm" value="">
+									<input type="file" id="file" name="file" required>
 									<button class="btn-admin btn-primary">
 										<span class="material-symbols-outlined">save</span> Lưu
 									</button>
@@ -63,7 +61,7 @@
 							<h4>Ảnh</h4>
 						</div>
 
-						<div class="card-body">
+						<!-- <div class="card-body">
 							<div class="dz-dropzone dz-dropzone-card" id = "drop_anh">
 								<div class="dz-message">
 									<img class="img-upload" src="/imgs/admin/img-upload.svg" alt="Image Description" data-hs-theme-appearance="default">
@@ -78,7 +76,7 @@
 									</div>
 								</div>
 							</div>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>
@@ -113,13 +111,14 @@
         });
 
         // Xử lý sự kiện chọn tệp
-        imageUpload.addEventListener('change', function(event) {
+        imageUpload.addEventListener('change', function(event) {						
             const files = event.target.files;
             handleFiles(files);
         });
 
         // Hàm xử lý tệp
         function handleFiles(files) {
+			debugger;
             if (files.length > 0) {
                 const formData = new FormData();
                 formData.append('image', files[0]);

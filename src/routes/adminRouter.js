@@ -46,12 +46,24 @@ const storage = multer.diskStorage({
 });
 
 //----
-const upload = multer({ storage: storage });
+const upload = multer({ dest: 'uploads/' });
+
 router.post('/upload-image', upload.single('image'), (req, res) => {
+    console.log('upload image');
+
+    // Kiểm tra nếu không có file
     if (!req.file) {
-        return res.status(400).json({ success: false, message: 'Không có tệp nào được tải lên.' });
+        return res.status(400).json({
+            success: false,
+            message: 'Không có tệp nào được tải lên.',
+        });
     }
-    res.status(200).json({ success: true, imageUrl: '/uploads/' + req.file.filename });
+
+    // Trả về đường dẫn file đã tải lên
+    res.status(200).json({
+        success: true,
+        imageUrl: '/uploads/' + req.file.filename,
+    });
 });
 
 
