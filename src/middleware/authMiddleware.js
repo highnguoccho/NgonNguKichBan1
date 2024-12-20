@@ -52,14 +52,26 @@ exports.checkUnAuth = (req, res, next) => {
 }
 
 exports.getLoggedIn = async (req, res, next) => {
-    console.log(`getLoggedIn: ${req.cookies.userSave}`);
+    
+    if (req.cookies.userSave == undefined)
+    {
+       console.log('Trạng thái đăng nhập: Chưa đăng nhập');
+    }
+
+    else{
+    
+       
+    
     if (req.cookies.userSave) {
         try {
             // 1. Verify the token
+            console.log('Đăng nhập thành công');    
             const decoded = await promisify(jwt.verify)(req.cookies.userSave,
                 process.env.JWT_SECRET
             );
-            console.log(decoded);
+            console.log('Hoạt động: ', decoded);
+            
+            
 
             // 2. Check if the user still exist
             db.query('SELECT * FROM view_user WHERE user_id = ?', [decoded.id], (err, results) => {
@@ -81,4 +93,5 @@ exports.getLoggedIn = async (req, res, next) => {
     } else {
         next();
     }
+}
 }
