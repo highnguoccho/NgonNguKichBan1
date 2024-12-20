@@ -33,6 +33,6 @@ app.use(cookieParser('secret'))
 // route init
 route(app)
 
-app.listen(cfg.port, () => {
+app.listen(cfg.port,'0.0.0.0', () => {
     console.log(`Website is running at http://${cfg.host}:${cfg.port}`)
 })
