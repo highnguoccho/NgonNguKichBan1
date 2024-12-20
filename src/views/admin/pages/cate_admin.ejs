@@ -115,7 +115,7 @@
 										<ul class="dropdown__list">
 											<li> <a class="admin-a" href="#">Sửa</a> </li>
 											<li> <a class="admin-a" href="#">Ẩn</a> </li>
-											<li> <button class="admin-a delete-category" data-id="<%= category.category_id %>">Xóa</button> </li>
+											<li> <a class="admin-a" href="#">Xóa</a> </li>
 										</ul>
 									</li>
 								</ul>
@@ -136,46 +136,6 @@
 	<!-- Scripts -->
 	<script src="/scripts/admin/cate_admin.js"></script>
 	<script src="/scripts/admin/index_admin.js"></script>
-	<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const deleteButtons = document.querySelectorAll('.delete-category');
-
-        deleteButtons.forEach(button => {
-            button.addEventListener('click', function(event) {
-                event.preventDefault();
-                const categoryId = this.getAttribute('data-id');
-
-                if (confirm('Bạn có chắc chắn muốn xóa danh mục này?')) {
-                    fetch(`/admin/categories_admin/delete/${categoryId}`, {
-                        method: 'DELETE',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        }
-                    })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        if (data.message) {
-                            alert(data.message);
-                            // Tải lại trang để cập nhật danh sách danh mục
-                            location.reload();
-                        } else {
-                            alert('Có lỗi xảy ra khi xóa danh mục.');
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        alert('Có lỗi xảy ra khi xóa danh mục.');
-                    });
-                }
-            });
-        });
-    });
-</script>
 
 </body>
 
