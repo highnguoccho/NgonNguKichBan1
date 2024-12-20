@@ -107,7 +107,7 @@ const setSuccess = element => {
 }
 
 const isValidUserName = userName => {
-    const re = /^[a-zA-Z\sàáạảãăắằẵặẳâầấậẩẫđèéẹẻẽêềếệểễòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữìíịỉĩỳýỵỷỹĂÂĐÊOÔƠƯ]+$/
+    const re = /^[a-zA-Z\sàáạảãăắằẵặẳâầấậẩẫđèéẹẻẽêềếệểễòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữìíÌịỉĩỳýỵỷỹĂÂĐÊOÔƠƯ]+$/
     return re.test(String(userName).trim())
 }
 
