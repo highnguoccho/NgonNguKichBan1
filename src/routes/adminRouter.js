@@ -31,7 +31,7 @@ router.get('/categories_admin', adminMiddleware.isLoggedIn, cateAdminController.
 router.post('/products_admin/add', adminMiddleware.isLoggedIn, cateAdminController.addProducts)
 router.get('/products_admin/add', adminMiddleware.isLoggedIn, cateAdminController.getAddProducts)
 router.get('/products_admin', adminMiddleware.isLoggedIn, cateAdminController.getProducts)
-
+router.post('/products_admin/delete', adminMiddleware.isLoggedIn, cateAdminController.deleteProducts)
 
 
 
